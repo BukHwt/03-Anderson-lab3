@@ -70,35 +70,64 @@ const findSubmissionByName = (array, name) => {
 
 console.log(findSubmissionByName(submissions, "Big Steve"));
 
-const findLowestScore = (array) => {
-  let lowest = Number.POSITIVE_INFINITY;
-  let tmp;
-  for (let i = array.length - 1; i >= 0; i--) {
-    tmp = array[i].score;
-    if (tmp < lowest) lowest = tmp;
-  }
-};
-
 // Declare a function named findLowestScore
 // Parameter(s): array
 // Functionality: return the object in the array that has the lowest score. Use the forEach method to loop through the whole array.
 
+const findLowestScore = (array) => {
+  let lowest = array[0];
+  for (let i = 0; i <= array.length - 1; i++) {
+    if (array[i].score < lowest.score) lowest = array[i];
+  }
+  return lowest;
+};
+
 console.log(findLowestScore(submissions));
+
+const findLowestScore2 = (array) => {
+  let lowest = array[0];
+  array.forEach((element) => {
+    if (element.score < lowest.score) lowest = element;
+  });
+  return lowest;
+};
+
+console.log(findLowestScore2(submissions));
 
 // //Declare a function named findAverageScore
 // Parameter(s): array
 // Functionality: return the average quiz score.  Use a for...of loop.
 
-const findAverageScore = (array) => {};
+const findAverageScore = (array) => {
+  let sum = 0;
+  for (const element of array) {
+    sum += element.score;
+  }
+  return sum / array.length;
+};
+
+console.log(findAverageScore(submissions));
 
 // Declare a function named filterPassing
 // Parameter(s): array
 // Functionality: return a new array using the filter method. The filter method should find objects in the array that have passing scores.
 
-const filterPassing = (array) => {};
+const filterPassing = (array) => {
+  return array.filter((element) => {
+    return element.passed;
+  });
+};
+
+console.log(filterPassing(submissions));
 
 // Declare a function named filter90AndAbove
 // Parameter(s): array
 // Functionality: return a new array using the filter method. The filter method should find objects in the array that have scores greater than or equal to 90.
 
-const filter90AndAbove = (array) => {};
+const filter90AndAbove = (array) => {
+  return array.filter((element) => {
+    return element.score >= 90;
+  });
+};
+
+console.log(filter90AndAbove(submissions));
