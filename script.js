@@ -94,6 +94,12 @@ const findLowestScore2 = (array) => {
 
 console.log(findLowestScore2(submissions));
 
+const findLowestScore3 = (array) => {
+  return array.reduce((acc, curVal) => {
+    return curVal.score < acc.score ? curVal : acc;
+  });
+};
+
 // //Declare a function named findAverageScore
 // Parameter(s): array
 // Functionality: return the average quiz score.  Use a for...of loop.
@@ -131,3 +137,22 @@ const filter90AndAbove = (array) => {
 };
 
 console.log(filter90AndAbove(submissions));
+
+const createRange = (start, end) => {
+  let newArray = [];
+  for (let i = start; i <= end; i++) {
+    newArray.push(i);
+  }
+  return newArray;
+};
+
+const countElements = (array) => {
+  let obj = {};
+  array.forEach((letter) => {
+    obj[letter] = 0;
+  });
+  array.forEach((letter) => {
+    obj[letter] += 1;
+  });
+  return obj;
+};
